@@ -97,6 +97,20 @@ public class Main {
                 System.out.println("White, it's your turn");
             }
             board.printBoard();
+
+            int[] playerInput = handleInput(input);
+            int row = playerInput[0];
+            int col = playerInput[1];
+            char currentTurn = board.currentTurn();
+
+            if (board.canBePlaced(row, col, currentTurn)) {
+
+                board.placePiece(row, col, currentTurn);
+                board.switchTurns();
+
+            } else {
+                System.out.println("Sorry, " + currentTurn + ". That can't be played there.");
+            }
         }
     }
 
